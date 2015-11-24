@@ -1,0 +1,159 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), local('Roboto-Light'), url(fonts/roboto-light.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(fonts/roboto-regular.ttf) format('truetype');
+}
+
+/* ---------- GENERAL ---------- */
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #ddd;
+	/*background: linear-gradient(130deg, rgba(11, 36, 216, 0.5), rgba(167, 158, 239, 1) 25%, rgba(72, 87, 193, 1));*/
+	background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+	line-height: 1.5em;
+}
+
+a { text-decoration: none; }
+
+.title {
+  font-size: 1.5em;
+  font-weight: 200;
+  color: #fff;
+}
+
+.cards {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px 0 10px;
+}
+
+.card {
+	display: inline-block;
+  width: 300px;
+  max-height: 400px;
+  margin: 0 10px 20px 0;
+}
+
+.card header {
+	background: #333748;
+	border-radius: 10px 10px 0 0;
+	padding: 0px 14px 50px 14px;
+  height: 100px;
+}
+
+.card footer {
+  background: #fff;
+  border-radius: 0 0 10px 10px;
+  padding: 0px 14px;
+  height: 80px;
+}
+
+.card article {
+  height: 150px;
+  padding: 10px 20px 10px 20px;
+  background: #fff;
+  overflow-y: scroll;
+  font-weight: 200;
+}
+
+.justify {
+	text-align: justify;
+}
+
+.buttons {
+	padding: 14px 0 14px 0;
+}
+
+.button {
+	display: inline-block;
+	width: 100%;
+  padding: 25px 0 25px 0;
+  background: #69f;
+  border-radius: 4px;
+  font-weight: normal;
+  font-size: 14px;
+  color: #fff;
+  letter-spacing: 1px;
+  line-height: 1px;
+  text-transform: uppercase;
+  border: 0;
+}
+
+.button:hover { background: #5a83dd; }
+
+.green {
+	color: #43C47A;
+}
+
+.greenbg {
+	background-color: #43C47A;
+}
+.greenbg:hover {
+	background-color: #43C44D;
+}
+
+.center {
+	text-align: center;
+}
+
+.inline {
+	display: inline-block;
+}
+
+.pad15 {
+  padding: 15px;
+}
+
+/* placeholder icon */
+.icon-placeholder {
+  position: relative;
+  display: block;
+  width: 4em;
+  height: 4em;
+  padding: 0.7em;
+  margin: 0 auto;
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+.smiley {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 300;
+  padding-top: 25px;
+}
+
+/* picture placeholder */
+.roundicon {
+    position: relative;
+    display: block;
+    width: 6em;
+    height: 6em;
+    padding: 0.7em;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+@media (max-width: 400px) {
+  .card {
+    width: 100%!important;
+  }
+}
