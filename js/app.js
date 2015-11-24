@@ -74,12 +74,14 @@ var list = function(data) {
     // br
     article.appendChild(document.createElement('br'));
     // privacy
-    var policy = document.createElement('a');
-    policy.classList.add('external');
-    policy.href = (idp.policyURL && idp.policyURL.length > 0)?safeHTML(idp.policyURL):'';
-    policy.innerHTML = "Privacy policy";
-    policy.setAttribute('target', '_blank'); // change to modal maybe?
-    article.appendChild(document.createElement('small').appendChild(policy));
+    if (idp.policyURL && idp.policyURL.length > 0) {
+      var policy = document.createElement('a');
+      policy.classList.add('external');
+      policy.href = safeHTML(idp.policyURL);
+      policy.innerHTML = "Privacy policy";
+      policy.setAttribute('target', '_blank'); // change to modal maybe?
+      article.appendChild(document.createElement('small').appendChild(policy));
+    }
 
     // footer
     var footer = document.createElement('footer');
