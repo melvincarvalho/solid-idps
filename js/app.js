@@ -62,6 +62,9 @@ var list = function(data) {
     var title = document.createElement('div');
     title.classList.add('title');
     title.innerHTML = (idp.title && idp.title.length > 0)?safeHTML(idp.title):'';
+    if (idp.title_color && idp.title_color.length > 0) {
+      title.style.color = safeHTML(idp.title_color);
+    }
     header.appendChild(title);
 
     // article
