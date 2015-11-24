@@ -1,4 +1,4 @@
-var idpList = 'https://solid.github.io/solid-idp-list/servers.json';
+var idpList = 'https://solid.github.io/solid-idp-list/services.json';
 
 /* ---- DON'T EDIT BELOW ---- */
 var accURL = {};
