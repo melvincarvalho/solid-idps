@@ -41,7 +41,7 @@ var list = function(data) {
 
     // header
     var header = document.createElement('header');
-    header.style.background = (idp.background && idp.background.length > 0)?safeHTML(idp.background):'';
+    header.style.background = (idp.icon_bg && idp.icon_bg.length > 0)?safeHTML(idp.icon_bg):'';
     card.appendChild(header);
     // icon
     if (idp.icon && idp.icon.length > 0) {
