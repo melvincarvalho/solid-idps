@@ -113,9 +113,8 @@ var list = function(data) {
     '    <div class="title">Your title here</div>'+
     '  </header>'+
     '  <article>'+
-    '    Would you like to have your server listed here?'+
-    '    <br>'+
-    '    Click the button below to learn how you can register as an official Solid account provider.'+
+    '    <p>Would you like to have your server listed here?</p>'+
+    '    <p>Click the button below to learn how you can register as an official Solid account provider.</p>'+
     '  </article>'+
     '  <footer>'+
     '    <div class="buttons">'+
