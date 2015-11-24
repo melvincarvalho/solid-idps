@@ -34,28 +34,103 @@ var init = function() {
 var list = function(data) {
   for (i in data.idps) {
     var idp = data.idps[i];
-    var card = '<div class="card">'+
-      '  <header>'+
-      '   <img src="'+safeHTML(idp.icon)+'" class="roundicon">'+
-      '   <div class="title">'+safeHTML(idp.title)+'</div>'+
-      '  </header>'+
-      '  <article class="justify">'+
-          safeHTML(idp.description)+
-      '   <br>'+
-      '   <small><a href="'+safeHTML(idp.privacyURL)+'" target="_blank">Privacy statement</a></small>'+
-      '  </article>'+
-      '  <footer>'+
-      '    <div class="buttons center">'+
-      '      <a href="'+safeHTML(idp.url)+'" class="button greenbg">Take me there</a>'+
-      '    </div>'+
-      '  </footer>'+
-      '</div>';
-      document.querySelector(".cards").insertAdjacentHTML('afterbegin', card);
+
+    // card
+    var card = document.createElement('div');
+    card.classList.add('card');
+
+    // header
+    var header = document.createElement('header');
+    header.style.background = (idp.background && idp.background.length > 0)?safeHTML(idp.background):'';
+    card.appendChild(header);
+    // icon
+    if (idp.icon && idp.icon.length > 0) {
+      var img = document.createElement('img');
+      img.src = safeHTML(idp.icon);
+      img.classList.add('roundicon');
+      header.appendChild(img);
+    } else {
+      var img = '<div class="pad15">'+
+      '      <div class="icon-placeholder">'+
+      '        <div class="smiley">°⏑°</div>'+
+      '      </div>'+
+      '    </div>';
+      header.insertAdjacentHTML('beforeend', img);
     }
+
+    // title
+    var title = document.createElement('div');
+    title.classList.add('title');
+    title.innerHTML = (idp.title && idp.title.length > 0)?safeHTML(idp.title):'';
+    header.appendChild(title);
+
+    // article
+    var article = document.createElement('article');
+    article.innerHTML = (idp.description && idp.description.length > 0)?safeHTML(idp.description):'';
+    card.appendChild(article);
+    // br
+    article.appendChild(document.createElement('br'));
+    // privacy
+    var policy = document.createElement('a');
+    policy.classList.add('external');
+    policy.href = (idp.policyURL && idp.policyURL.length > 0)?safeHTML(idp.policyURL):'';
+    policy.innerHTML = "Privacy policy";
+    policy.setAttribute('target', '_blank'); // change to modal maybe?
+    article.appendChild(document.createElement('small').appendChild(policy));
+
+    // footer
+    var footer = document.createElement('footer');
+    card.appendChild(footer);
+    // buttons div
+    var buttons = document.createElement('div');
+    buttons.classList.add('buttons');
+    footer.appendChild(buttons);
+    var button = document.createElement('a');
+    button.innerHTML = "Take me there";
+    button.href = (idp.url && idp.url.length > 0)?safeHTML(idp.url):'#';
+    button.classList.add('button');
+    if (idp.btn_bg && idp.btn_bg.length > 0) {
+      button.style.background = safeHTML(idp.btn_bg);
+    } else {
+      button.classList.add('greenbg');
+    }
+    if (idp.btn_color && idp.btn_color.length > 0) {
+      button.style.color = safeHTML(idp.btn_color);
+    }
+    buttons.appendChild(button);
+
+    // append to DOM
+    document.querySelector(".cards").appendChild(card);
+  }
+
+  var howto = '<div class="card">'+
+    '  <header>'+
+    '    <div class="pad15">'+
+    '      <div class="icon-placeholder">'+
+    '        <div class="smiley">°⏑°</div>'+
+    '      </div>'+
+    '    </div>'+
+    '    <div class="title">Your title here</div>'+
+    '  </header>'+
+    '  <article>'+
+    '    Would you like to have your server listed here?'+
+    '    <br>'+
+    '    Click the button below to learn how you can register as an official Solid account provider.'+
+    '  </article>'+
+    '  <footer>'+
+    '    <div class="buttons">'+
+    '      <a href="https://github.com/solid/solid-idp-list/" target="_blank" class="button">Learn more</a>'+
+    '    </div>'+
+    '  </footer>'+
+    '</div>';
+    document.querySelector(".cards").insertAdjacentHTML('beforeend', howto);
 };
 
 var safeHTML = function(str) {
-  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  if (str && str.length > 0) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  return '';
 };
 
 init();
